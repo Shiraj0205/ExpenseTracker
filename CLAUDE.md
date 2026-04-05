@@ -16,10 +16,13 @@ No test framework is configured.
 
 ## Architecture
 
-Single-component React app (`src/App.jsx`) — all state, logic, and UI live in one `App` component with no child components. State is in-memory only; transactions are lost on page refresh.
+React app split into four components. State is in-memory only; transactions are lost on page refresh.
 
-**Known bugs in the starter code** (intentional, per course design):
-- `amount` is stored as a string, so `totalIncome` and `totalExpenses` use string concatenation instead of numeric addition — the summary cards display wrong values.
-- "Freelance Work" is seeded as `type: "expense"` despite being income.
+| File | Responsibility |
+|---|---|
+| `src/App.jsx` | Holds `transactions` state and seed data; passes data and callbacks down |
+| `src/Summary.jsx` | Receives `transactions`, computes and displays totalIncome, totalExpenses, balance |
+| `src/TransactionForm.jsx` | Owns form state (description, amount, type, category); calls `onAdd(transaction)` on submit |
+| `src/TransactionList.jsx` | Owns filter state (filterType, filterCategory); receives `transactions` and renders the table |
 
-**Categories:** `food`, `housing`, `utilities`, `transport`, `entertainment`, `salary`, `other` — defined as a hardcoded array in `App.jsx`.
+**Categories:** `food`, `housing`, `utilities`, `transport`, `entertainment`, `salary`, `other` — hardcoded in both `TransactionForm.jsx` and `TransactionList.jsx`.
