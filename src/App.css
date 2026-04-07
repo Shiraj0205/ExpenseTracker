@@ -95,6 +95,15 @@ form button {
   font-size: 14px;
 }
 
+.spending-chart {
+  margin-bottom: 24px;
+}
+
+.spending-chart h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
 .transactions {
   margin-bottom: 24px;
 }
